@@ -17,6 +17,7 @@
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>
+    <?php include("header.html");?>
     <img src="images/banniereMovEase.jpg" class ="banniere" alt="banniere du site Mov'Ease">
     <br>
     <br>
@@ -59,5 +60,9 @@
     </div>
     <br>
     <br>
+    <footer>
+        <?php include("footer.html");
+        ?>
+    </footer>
 </body>
 </html>
