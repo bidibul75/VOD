@@ -1,12 +1,14 @@
-CREATE DATABASE IF NOT EXISTS movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
+DROP DATABASE IF EXISTS movease;
+
+CREATE DATABASE movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
 
 CREATE TABLE produit(
     idProduit INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR (100) NOT NULL,
     synopsis TEXT(500),
 	realisateur VARCHAR (30),
-	prixStream FLOAT,
-	prixAchat FLOAT,
+	prixStream DECIMAL(6,2),
+	prixAchat DECIMAL(6,2),
 	imageProduit VARCHAR(50),
 	PRIMARY KEY(idProduit)
 );
@@ -75,7 +77,7 @@ CREATE TABLE utilisateur(
 
 CREATE TABLE commande(
     idCommande INT NOT NULL AUTO_INCREMENT,
-    prixTotal FLOAT,
+    prixTotal DECIMAL(6,2),
     idUtilisateur INT NOT NULL,
     adresseLivraison VARCHAR(150),
     codePostalLivraison VARCHAR (5),
