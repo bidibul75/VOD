@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="CSS/index.css">
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>
@@ -26,6 +26,7 @@
             <h2>Nouveautés</h2>
             <div class ="horizontalScroll">
                 <?php 
+                //new mysqli("exemple@xyz","Xalos","12345","movease");
                 ?>
             </div>
         </div>
@@ -60,9 +61,6 @@
     </div>
     <br>
     <br>
-    <footer>
-        <?php include("footer.html");
-        ?>
-    </footer>
+    <?php include("footer.html");?>
 </body>
 </html>
