@@ -1,8 +1,18 @@
 <?php
+    $user = "root";
+    $pwd = "";
+    $db = "mysql:host-localhost;dbname-movease";
 
 
+    try {
+        $connexion = new PDO("$db", $user, $pwd) or die();
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Une erreur est survenue lors de la connexion : ". $e->getMessage() . "</br>";
+        die();
+    }
 
-
+    $sql = "select nom from produit";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +36,9 @@
             <h2>Nouveautés</h2>
             <div class ="horizontalScroll">
                 <?php 
-                //new mysqli("exemple@xyz","Xalos","12345","movease");
+                    $connexion->query($sql);
+                    $sth = $connexion->prepare($sql);
+                    $sth->execute();
                 ?>
             </div>
         </div>
@@ -40,7 +52,8 @@
         <div class="actionType">
             <h2>Action</h2>
             <div class ="horizontalScroll">
-                <?php 
+                <?php
+                 
                 ?>
             </div>
         </div>
