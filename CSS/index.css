@@ -1,0 +1,26 @@
+*{
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+}
+
+.banniere{
+    max-width:100% ;
+}
+
+.affiche{
+    max-height: 15vw;
+    width: auto;
+    margin-left: 20px;
+}
+
+.affiche:hover{
+    transform: scale(1.15);
+}
+
+.horizontalScroll{
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
+
