@@ -7,6 +7,22 @@
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
+CREATE DATABASE movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
+CREATE DATABASE IF NOT EXISTS movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
+CREATE DATABASE IF NOT EXISTS movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE produit(
+    idProduit INT NOT NULL AUTO_INCREMENT,
+    nom VARCHAR (100) NOT NULL,
+    synopsis TEXT(500),
+	realisateur VARCHAR (30),
+	prixStream DECIMAL(6,2),
+	prixAchat DECIMAL(6,2),
+	prixStream FLOAT,
+	prixAchat FLOAT,
+	imageProduit VARCHAR(50),
+	PRIMARY KEY(idProduit)
+);
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -150,6 +166,75 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 
 -- --------------------------------------------------------
 
+INSERT INTO produit (nom, synopsis, realisateur, prixStream, prixAchat, imageProduit)
+VALUES
+("Inception", "Dom Cobb est un voleur expérimenté qui vole des secrets en infiltrant le subconscient de ses cibles pendant qu'elles rêvent.", "Christopher Nolan", 4.99, 7.99, "images/img1"), -- action
+("Die Hard", "Un officier de police de New York se retrouve coincé dans un gratte-ciel avec des terroristes preneurs d'otages.", "John McTiernan", 4.99, 7.99, "images/img2"), 
+("Mad Max: Fury Road", "Dans un futur apocalyptique, Max s'associe à une impératrice rebelle pour échapper à un seigneur de guerre tyrannique.", "George Miller", 4.99, 7.99, "images/img3"), 
+("The Dark Knight", "Batman s'allie au procureur Harvey Dent pour tenter de démanteler le crime organisé à Gotham City.", "Christopher Nolan", 4.99, 7.99, "images/img4"), 
+("John Wick", "Un ancien tueur à gages se lance dans une vendetta sanglante après que des criminels aient tué son chien.", "Chad Stahelski", 4.99, 7.99, "images/img5"), 
+("Harry Potter à l'école des sorciers", "Un jeune sorcier, Harry Potter, découvre son héritage magique et fréquente l'école de sorcellerie Poudlard.", "Chris Columbus", 4.99, 7.99, "images/img6"), -- fantastique
+("Le Seigneur des Anneaux : La Communauté de l'Anneau", "Un hobbit, Frodo Baggins, se lance dans une quête pour détruire un anneau puissant et sauver la Terre du Milieu du seigneur des ténèbres Sauron.", "Peter Jackson", 4.99, 7.99, "images/img7"),
+("Le Labyrinthe de Pan", "Dans l'Espagne de l'après-guerre civile, une jeune fille découvre un labyrinthe mystérieux et rencontre des créatures magiques.", "Guillermo del Toro", 4.99, 7.99, "images/img8"),
+("Alice au pays des merveilles", "Alice s'aventure dans le monde fantastique du pays des merveilles, rencontrant des personnages loufoques et des défis.", "Tim Burton", 4.99, 7.99, "images/img9"),
+("Les Chroniques de Narnia : Le Lion, la Sorcière blanche et l'Armoire magique", "Quatre frères et sœurs découvrent une armoire magique qui les conduit au pays de Narnia, où ils doivent affronter une sorcière maléfique.", "Andrew Adamson", 4.99, 7.99, "images/img10"), 
+("Shining", "Une famille est isolée dans un hôtel hanté pendant l'hiver, et la santé mentale du père se détériore.", "Stanley Kubrick", 4.99, 7.99, "images/img11"), -- Horreur
+("L'Exorciste", "Une mère fait appel à l'aide de deux prêtres pour sauver sa fille d'une possession démoniaque.", "William Friedkin", 4.99, 7.99, "images/img12"), 
+("Psychose", "Une secrétaire détournes de l'argent et s'installe dans un motel isolé dirigé par un aubergiste perturbé.", "Alfred Hitchcock", 4.99, 7.99, "images/img13"), 
+("Get Out", "Un homme noir découvre des secrets troublants lorsqu'il rencontre la famille blanche de sa petite amie.", "Jordan Peele", 4.99, 7.99, "images/img14"), 
+("Conjuring : Les Dossiers Warren", "Des enquêteurs paranormaux aident une famille terrorisée par une présence sombre dans leur ferme.", "James Wan", 4.99, 7.99, "images/img15"), 
+("Seven", "Deux détectives traquent un tueur en série qui utilise les sept péchés capitaux comme motifs.", "David Fincher", 4.99, 7.99, "images/img16"), -- Suspense
+("Le Silence des Agneaux", "Une stagiaire du FBI cherche l'aide d'un tueur en série brillant mais fou pour attraper un autre tueur en liberté.", "Jonathan Demme", 4.99, 7.99, "images/img17"), 
+("Gone Girl", "Un mari devient le principal suspect lorsque sa femme disparaît dans des circonstances suspectes.", "David Fincher", 4.99, 7.99, "images/img18"), 
+("Shutter Island", "Deux marshals américains enquêtent sur la disparition d'un détenu d'un institut psychiatrique sur l'île de Shutter.", "Martin Scorsese", 4.99, 7.99, "images/img19"), 
+("Prisonniers", "Un père prend les choses en main lorsque sa fille disparaît et que la police a du mal à la retrouver.", "Denis Villeneuve", 4.99, 7.99, "images/img20"), 
+("Charlie et la chocolaterie", "Charlie Bucket est un petit garçon vivant avec ses parents et ses quatre grands-parents dans une frêle maison en bois, non loin d'une immense chocolaterie dirigée par Willy Wonka. Un jour d'hiver, Willy Wonka annonce qu'il organise un grand concours .","Tim Burton", 4.99, 7.99, "images/img21"), -- Jeunesse
+("Le Seigneur des Anneaux : La Communauté de l'Anneau", "Un hobbit, Frodo Baggins, se lance dans une quête pour détruire un anneau puissant et sauver la Terre du Milieu du seigneur des ténèbres Sauron.", "Peter Jackson", 4.99, 7.99, "images/img22"), 
+("Alice au pays des merveilles", "Alice s'aventure dans le monde fantastique du pays des merveilles, rencontrant des personnages loufoques et des défis.", "Tim Burton", 4.99, 7.99, "images/img23"), 
+("Les Chroniques de Narnia : Le Lion, la Sorcière blanche et l'Armoire magique", "Quatre frères et sœurs découvrent une armoire magique qui les conduit au pays de Narnia, où ils doivent affronter une sorcière maléfique.", "Andrew Adamson", 4.99, 7.99, "images/img24"), 
+("La Reine des neiges", "Une princesse tente de sauver son royaume gelé en se lançant dans un voyage avec ses amis pour trouver sa sœur, la Reine des neiges.", "Chris Buck, Jennifer Lee", 4.99, 7.99, "images/img25"), 
+("Toy Story", "Des jouets prennent vie lorsque les humains ne sont pas présents, et Woody, le cow-boy jouet, doit faire face à l'arrivée d'un nouveau jouet, Buzz l'Éclair.", "John Lasseter", 4.99, 7.99, "images/img26"), -- Comédie
+("Le Monde de Nemo", "Un poisson-poisson clown, Marlin, part à la recherche de son fils Nemo, capturé par un plongeur et placé dans un aquarium.", "Andrew Stanton", 4.99, 7.99, "images/img27"), 
+("Les Indestructibles", "Une famille de super-héros tente de vivre une vie normale tout en cachant leurs pouvoirs, mais ils doivent reprendre du service pour sauver le monde.", "Brad Bird", 4.99, 7.99, "images/img28"), 
+("Harry Potter et la Chambre des secrets", "Harry Potter retourne à Poudlard et découvre une chambre secrète contenant un mystérieux monstre qui pétrifie les étudiants.", "Chris Columbus", 4.99, 7.99, "images/img29"), 
+("Le Livre de la Jungle", "Mowgli, un jeune garçon élevé par des loups, entreprend un voyage périlleux pour échapper au tigre Shere Khan et retrouver les humains.", "Jon Favreau", 4.99, 7.99, "images/img30"), 
+("Intouchables", "Un aristocrate paraplégique engage un jeune homme de banlieue pour être son aide-soignant, entraînant des situations comiques et touchantes.", "Olivier Nakache, Éric Toledano", 4.99, 7.99, "images/img31"), -- Drame
+("Bienvenue chez les Ch'tis", "Un directeur de bureau sudiste est muté dans le nord de la France, où il découvre les habitants chaleureux malgré les stéréotypes.", "Dany Boon", 4.99, 7.99, "images/img32"), 
+("La La Land", "Un pianiste de jazz et une aspirante actrice à Los Angeles tombent amoureux tout en poursuivant leurs rêves artistiques.", "Damien Chazelle", 4.99, 7.99, "images/img33"), 
+("Les Vacances de Mr. Bean", "Mr. Bean part en vacances en France et provoque des situations comiques alors qu'il essaie de profiter de son temps libre.", "Steve Bendelack", 4.99, 7.99, "images/img34"), 
+("Les Tuche", "Une famille modeste du nord de la France gagne soudainement à la loterie et doit s'adapter à sa nouvelle vie dans les cercles aisés.", "Olivier Baroux", 4.99, 7.99, "images/img35"), 
+("Le Grand Budapest Hotel", "Un employé d'un hôtel de luxe en Europe et son protégé se retrouvent impliqués dans une série d'événements comiques et criminels.", "Wes Anderson", 4.99, 7.99, "images/img36"), 
+("Le Dîner de Cons", "Un homme invite des individus excentriques à un dîner où le but est de se moquer d'eux, mais les choses ne se passent pas comme prévu.", "Francis Veber", 4.99, 7.99, "images/img37"), 
+("Les Visiteurs", "Un noble médiéval et son serviteur sont transportés dans le futur, provoquant des situations hilarantes alors qu'ils tentent de s'adapter à la vie moderne.", "Jean-Marie Poiré", 4.99, 7.99, "images/img38"), 
+("La Famille Bélier", "Une adolescente dont la famille est sourde découvre son talent pour le chant, ce qui la met en conflit entre ses rêves et sa responsabilité familiale.", "Éric Lartigau", 4.99, 7.99, "images/img39"), 
+("Le Corniaud", "Un homme d'affaires parisien se retrouve impliqué dans des activités criminelles alors qu'il fait du covoiturage avec un homme maladroit.", "Gérard Oury", 4.99, 7.99, "images/img40"), 
+("Les Misérables", "Basé sur le roman de Victor Hugo, le film suit la vie de Jean Valjean, un ancien forçat, et d'autres personnages pendant les bouleversements sociaux en France.", "Tom Hooper", 4.99, 7.99, "images/img41"), -- Drame
+("Le Pianiste", "Inspiré de la vie du pianiste Władysław Szpilman pendant la Seconde Guerre mondiale, le film explore sa lutte pour survivre dans le ghetto de Varsovie.", "Roman Polanski", 4.99, 7.99, "images/img42"), 
+("American History X", "Un ancien néo-nazi tente de prévenir son jeune frère de suivre ses pas violents après sa libération de prison.", "Tony Kaye", 4.99, 7.99, "images/img43"),
+("La Ligne Verte", "Un gardien de prison découvre que l'un de ses détenus possède un don surnaturel, ce qui affecte profondément la vie de tous les prisonniers.", "Frank Darabont", 4.99, 7.99, "images/img44"),
+("Forrest Gump", "Forrest Gump, un homme avec un quotient intellectuel bas, raconte son histoire extraordinaire tout en participant à des événements historiques clés.", "Robert Zemeckis", 4.99, 7.99, "images/img45"),
+("Le Roi Lion", "Le lionceau Simba doit faire face à des défis pour devenir le roi de la Terre des Lions après que son père, le roi Mufasa, soit tué par son oncle Scar.", "Roger Allers, Rob Minkoff", 4.99, 7.99,  "images/img46");
+
+-- --------------------------------------------------------
+
+CREATE TABLE commande(
+    idCommande INT NOT NULL AUTO_INCREMENT,
+    prixTotal DECIMAL(6,2),
+    prixTotal FLOAT,
+    idUtilisateur INT NOT NULL,
+    adresseLivraison VARCHAR(150),
+    codePostalLivraison VARCHAR (5),
+    villeLivraison VARCHAR (50),
+	PRIMARY KEY (idCommande),
+	FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+    );
+     
+-- Le format du produit en vente	 
+CREATE TABLE formatProduit(
+    idFormatProduit INT NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(30) NOT NULL,
+    PRIMARY KEY (idFormatProduit)
+);
 --
 -- Structure de la table `produit_categorie`
 --
@@ -233,6 +318,15 @@ CREATE TABLE `produit_commande` (
   `idFormatProduit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE produit_commande(
+    idProduit INT NOT NULL,
+    idCommande INT NOT NULL,
+	idFormatProduit INT NOT NULL,
+	FOREIGN KEY (idProduit) REFERENCES produit(idProduit),
+	FOREIGN KEY(idCommande) REFERENCES commande(idCommande),
+	FOREIGN KEY(idFormatProduit) REFERENCES formatProduit(idFormatProduit)
+);
+);
 -- --------------------------------------------------------
 
 --
@@ -362,4 +456,5 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
