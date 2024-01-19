@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 19 jan. 2024 à 12:37
+-- Généré le : ven. 19 jan. 2024 à 13:13
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -123,7 +123,7 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 (20, 'Prisonniers', 'Un père prend les choses en main lorsque sa fille disparaît et que la police a du mal à la retrouver.', 'Denis Villeneuve', 4.99, 7.99, 'images/img20.jpg'),
 (21, 'Charlie et la chocolaterie', 'Charlie Bucket est un petit garçon vivant avec ses parents et ses quatre grands-parents dans une frêle maison en bois, non loin d\'une immense chocolaterie dirigée par Willy Wonka. Un jour d\'hiver, Willy Wonka annonce qu\'il organise un grand concours .', 'Tim Burton', 4.99, 7.99, 'images/img21.jpg'),
 (22, 'Le Seigneur des Anneaux : La Communauté de l\'Anneau', 'Un hobbit, Frodo Baggins, se lance dans une quête pour détruire un anneau puissant et sauver la Terre du Milieu du seigneur des ténèbres Sauron.', 'Peter Jackson', 4.99, 7.99, 'images/img22.jpg'),
-(23, 'Alice au pays des merveilles', 'Alice s\'aventure dans le monde fantastique du pays des merveilles, rencontrant des personnages loufoques et des défis.', 'Tim Burton', 4.99, 7.99, 'images/img23.jpg'),
+(23, 'The Bad Guys', 'Après toute une vie de braquages légendaires, les criminels notoires M. Wolf, M. Snake, M. Piranha, M. Shark et Mme Tarantula sont enfin capturés. Pour éviter une peine de prison, les animaux hors-la-loi doivent réussir leur plus grande arnaque : devenir des citoyens modèles. Sous la tutelle de leur mentor, le professeur Marmalade, la bande entreprend de faire croire au monde qu\'elle est en train de devenir honnête.', 'Pierre Perifel', 4.99, 7.99, 'images/img23.jpg'),
 (24, 'Les Chroniques de Narnia : Le Lion, la Sorcière blanche et l\'Armoire magique', 'Quatre frères et sœurs découvrent une armoire magique qui les conduit au pays de Narnia, où ils doivent affronter une sorcière maléfique.', 'Andrew Adamson', 4.99, 7.99, 'images/img24.jpg'),
 (25, 'La Reine des neiges', 'Une princesse tente de sauver son royaume gelé en se lançant dans un voyage avec ses amis pour trouver sa sœur, la Reine des neiges.', 'Chris Buck, Jennifer Lee', 4.99, 7.99, 'images/img25.jpg'),
 (26, 'Toy Story', 'Des jouets prennent vie lorsque les humains ne sont pas présents, et Woody, le cow-boy jouet, doit faire face à l\'arrivée d\'un nouveau jouet, Buzz l\'Éclair.', 'John Lasseter', 4.99, 7.99, 'images/img26.jpg'),
