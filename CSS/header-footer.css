@@ -4,11 +4,20 @@ header {
     padding: 10px;
     position: sticky;
     top: 0px;
+    
+}
+
+a:hover{
+    color: rgb(179, 16, 220);
+    -webkit-transition: color 0.5s;
+    transition: color 0.5s;
 }
 
 .lookingForBar{
     justify-content: flex-end;
     align-items: flex-end;
+    position: relative;
+    left: 160px;
 }
 
 nav ul {
@@ -19,6 +28,20 @@ nav ul {
 
 nav ul li {
     margin-right: 20px;
+}
+
+.login img{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 3px;
+}
+
+.login{
+    border-radius: 100%;
+    position: relative;
+    right: 15px;
 }
 
 nav a {
@@ -73,10 +96,16 @@ footer {
 .social-media img {
     width: 30px;
     margin-right: 10px;
+    
 }
 
 .internal-links a{
     color: white;
     display: flex;
     justify-content: flex-end;
+    text-decoration: none;
+}
+
+.internal-links a:hover{
+    transform: scale(1);
 }
