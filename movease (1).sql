@@ -1,17 +1,104 @@
-DROP DATABASE IF EXISTS movease;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : ven. 19 jan. 2024 à 12:37
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
-CREATE DATABASE IF NOT EXISTS movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE TABLE produit(
-    idProduit INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR (100) NOT NULL,
-    synopsis TEXT(500),
-	realisateur VARCHAR (30),
-	prixStream DECIMAL(6,2),
-	prixAchat DECIMAL(6,2),
-	imageProduit VARCHAR(50),
-	PRIMARY KEY(idProduit)
-);
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `movease`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `idCategorie` int(11) NOT NULL,
+  `nom` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`idCategorie`, `nom`) VALUES
+(1, 'Action'),
+(2, 'Fantastique'),
+(3, 'Horreur'),
+(4, 'Suspense'),
+(5, 'Jeunesse'),
+(6, 'Comédie'),
+(7, 'Drame'),
+(8, 'Promotions');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+CREATE TABLE `commande` (
+  `idCommande` int(11) NOT NULL,
+  `prixTotal` decimal(6,2) DEFAULT NULL,
+  `idUtilisateur` int(11) NOT NULL,
+  `adresseLivraison` varchar(150) DEFAULT NULL,
+  `codePostalLivraison` varchar(5) DEFAULT NULL,
+  `villeLivraison` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `formatproduit`
+--
+
+CREATE TABLE `formatproduit` (
+  `idFormatProduit` int(11) NOT NULL,
+  `nom` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `formatproduit`
+--
+
+INSERT INTO `formatproduit` (`idFormatProduit`, `nom`) VALUES
+(1, 'Streaming'),
+(2, 'Achat');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+CREATE TABLE `produit` (
+  `idProduit` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `synopsis` text DEFAULT NULL,
+  `realisateur` varchar(30) DEFAULT NULL,
+  `prixStream` decimal(6,2) DEFAULT NULL,
+  `prixAchat` decimal(6,2) DEFAULT NULL,
+  `imageProduit` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `produit`
+--
 
 INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStream`, `prixAchat`, `imageProduit`) VALUES
 (1, 'Inception', 'Dom Cobb est un voleur expérimenté qui vole des secrets en infiltrant le subconscient de ses cibles pendant qu\'elles rêvent.', 'Christopher Nolan', 4.99, 7.99, 'images/img1.jpg'),
@@ -34,7 +121,7 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 (18, 'Gone Girl', 'Un mari devient le principal suspect lorsque sa femme disparaît dans des circonstances suspectes.', 'David Fincher', 4.99, 7.99, 'images/img18.jpg'),
 (19, 'Shutter Island', 'Deux marshals américains enquêtent sur la disparition d\'un détenu d\'un institut psychiatrique sur l\'île de Shutter.', 'Martin Scorsese', 4.99, 7.99, 'images/img19.jpg'),
 (20, 'Prisonniers', 'Un père prend les choses en main lorsque sa fille disparaît et que la police a du mal à la retrouver.', 'Denis Villeneuve', 4.99, 7.99, 'images/img20.jpg'),
-(21, 'Harry Potter à l\'école des sorciers', 'Un jeune sorcier, Harry Potter, découvre son héritage magique et fréquente l\'école de sorcellerie Poudlard.', 'Chris Columbus', 4.99, 7.99, 'images/img21.jpg'),
+(21, 'Charlie et la chocolaterie', 'Charlie Bucket est un petit garçon vivant avec ses parents et ses quatre grands-parents dans une frêle maison en bois, non loin d\'une immense chocolaterie dirigée par Willy Wonka. Un jour d\'hiver, Willy Wonka annonce qu\'il organise un grand concours .', 'Tim Burton', 4.99, 7.99, 'images/img21.jpg'),
 (22, 'Le Seigneur des Anneaux : La Communauté de l\'Anneau', 'Un hobbit, Frodo Baggins, se lance dans une quête pour détruire un anneau puissant et sauver la Terre du Milieu du seigneur des ténèbres Sauron.', 'Peter Jackson', 4.99, 7.99, 'images/img22.jpg'),
 (23, 'Alice au pays des merveilles', 'Alice s\'aventure dans le monde fantastique du pays des merveilles, rencontrant des personnages loufoques et des défis.', 'Tim Burton', 4.99, 7.99, 'images/img23.jpg'),
 (24, 'Les Chroniques de Narnia : Le Lion, la Sorcière blanche et l\'Armoire magique', 'Quatre frères et sœurs découvrent une armoire magique qui les conduit au pays de Narnia, où ils doivent affronter une sorcière maléfique.', 'Andrew Adamson', 4.99, 7.99, 'images/img24.jpg'),
@@ -61,132 +148,218 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 (45, 'Forrest Gump', 'Forrest Gump, un homme avec un quotient intellectuel bas, raconte son histoire extraordinaire tout en participant à des événements historiques clés.', 'Robert Zemeckis', 4.99, 7.99, 'images/img45.jpg'),
 (46, 'Le Roi Lion', 'Le lionceau Simba doit faire face à des défis pour devenir le roi de la Terre des Lions après que son père, le roi Mufasa, soit tué par son oncle Scar.', 'Roger Allers, Rob Minkoff', 4.99, 7.99, 'images/img46.jpg');
 
- 
-CREATE TABLE utilisateur(
-    idUtilisateur INT NOT NULL AUTO_INCREMENT,
-    login VARCHAR (30) NOT NULL,
-	motDePasse VARCHAR (30) NOT NULL,
-	nom VARCHAR (30) NOT NULL,
-    prenom VARCHAR (30),
-    adresseUtilisateur VARCHAR(150),
-    codePostalUtilisateur VARCHAR (5),
-    villeUtilisateur VARCHAR (50),
-	PRIMARY KEY (idUtilisateur)	
- );
+-- --------------------------------------------------------
 
-CREATE TABLE commande(
-    idCommande INT NOT NULL AUTO_INCREMENT,
-    prixTotal DECIMAL(6,2),
-    idUtilisateur INT NOT NULL,
-    adresseLivraison VARCHAR(150),
-    codePostalLivraison VARCHAR (5),
-    villeLivraison VARCHAR (50),
-	PRIMARY KEY (idCommande),
-	FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(idUtilisateur)
-    );
-     
--- Le format du produit en vente	 
-CREATE TABLE formatProduit(
-    idFormatProduit INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(30) NOT NULL,
-    PRIMARY KEY (idFormatProduit)
-);
+--
+-- Structure de la table `produit_categorie`
+--
 
-INSERT INTO formatProduit (nom) VALUES
-('Streaming'),
-('Achat');
+CREATE TABLE `produit_categorie` (
+  `idProduit` int(11) NOT NULL,
+  `idCategorie` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Table categorie : y compris promotions
-CREATE TABLE categorie(
-    idCategorie INT NOT NULL AUTO_INCREMENT,
-	nom VARCHAR(20) NOT NULL,
-	PRIMARY KEY (idCategorie) 
-);
+--
+-- Déchargement des données de la table `produit_categorie`
+--
 
-INSERT INTO categorie (nom) VALUES
-('Action'),
-('Fantastique'),
-('Horreur'),
-('Suspense'),
-('Jeunesse'),
-('Comédie'),
-('Drame'),
-('Promotions');
+INSERT INTO `produit_categorie` (`idProduit`, `idCategorie`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 3),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 4),
+(17, 4),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 5),
+(23, 5),
+(24, 5),
+(25, 5),
+(23, 6),
+(26, 5),
+(27, 5),
+(28, 5),
+(29, 5),
+(30, 5),
+(31, 6),
+(32, 6),
+(33, 6),
+(34, 6),
+(35, 6),
+(33, 6),
+(31, 7),
+(22, 7),
+(33, 7),
+(36, 6),
+(37, 6),
+(38, 6),
+(39, 6),
+(40, 6),
+(41, 7),
+(42, 7),
+(42, 7),
+(43, 7),
+(44, 7),
+(45, 7),
+(46, 7),
+(4, 8),
+(8, 8),
+(14, 8),
+(24, 8),
+(33, 8);
 
+-- --------------------------------------------------------
 
-CREATE TABLE produit_categorie(
-    idProduit INT NOT NULL,
-    idCategorie INT NOT NULL,
-	FOREIGN KEY (idProduit) REFERENCES produit(idProduit),
-	FOREIGN KEY(idCategorie) REFERENCES categorie(idCategorie)
-);
+--
+-- Structure de la table `produit_commande`
+--
 
-INSERT INTO produit_categorie (idProduit, idCategorie) VALUES
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1),
-(6,2),
-(7,2),
-(8,2),
-(9,2),
-(10,2),
-(11,3),
-(12,3),
-(13,3),
-(14,3),
-(15,3),
-(16,4),
-(17,4),
-(18,4),
-(19,4),
-(20,4),
-(21,5),
-(22,5),
-(23,5),
-(24,5),
-(25,5),
-(20,5),
-(23,6),
-(19,5),
-(26,5),
-(27,5),
-(28,5),
-(29,5),
-(30,5),
-(31,6),
-(32,6),
-(33,6),
-(34,6),
-(35,6),
-(33,6),
-(31,7),-- Intouchables
-(22,7), -- seigneur des anneaux
-(33,7), -- la la Land
-(36,6),
-(37,6),
-(38,6),
-(39,6),
-(40,6),
-(41,7),
-(42,7),
-(42,7),
-(43,7),
-(44,7),
-(45,7),
-(46,7),
-(4,8),
-(8,8),
-(14,8),
-(24,8),
-(33,8);
+CREATE TABLE `produit_commande` (
+  `idProduit` int(11) NOT NULL,
+  `idCommande` int(11) NOT NULL,
+  `idFormatProduit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE produit_commande(
-    idProduit INT NOT NULL,
-    idCommande INT NOT NULL,
-	idFormatProduit INT NOT NULL,
-	FOREIGN KEY (idProduit) REFERENCES produit(idProduit),
-	FOREIGN KEY(idCommande) REFERENCES commande(idCommande),
-	FOREIGN KEY(idFormatProduit) REFERENCES formatProduit(idFormatProduit)
-);
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `idUtilisateur` int(11) NOT NULL,
+  `login` varchar(30) NOT NULL,
+  `motDePasse` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) DEFAULT NULL,
+  `adresseUtilisateur` varchar(150) DEFAULT NULL,
+  `codePostalUtilisateur` varchar(5) DEFAULT NULL,
+  `villeUtilisateur` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`idCategorie`);
+
+--
+-- Index pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD PRIMARY KEY (`idCommande`),
+  ADD KEY `idUtilisateur` (`idUtilisateur`);
+
+--
+-- Index pour la table `formatproduit`
+--
+ALTER TABLE `formatproduit`
+  ADD PRIMARY KEY (`idFormatProduit`);
+
+--
+-- Index pour la table `produit`
+--
+ALTER TABLE `produit`
+  ADD PRIMARY KEY (`idProduit`);
+
+--
+-- Index pour la table `produit_categorie`
+--
+ALTER TABLE `produit_categorie`
+  ADD KEY `idProduit` (`idProduit`),
+  ADD KEY `idCategorie` (`idCategorie`);
+
+--
+-- Index pour la table `produit_commande`
+--
+ALTER TABLE `produit_commande`
+  ADD KEY `idProduit` (`idProduit`),
+  ADD KEY `idCommande` (`idCommande`),
+  ADD KEY `idFormatProduit` (`idFormatProduit`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`idUtilisateur`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `idCategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `commande`
+--
+ALTER TABLE `commande`
+  MODIFY `idCommande` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `formatproduit`
+--
+ALTER TABLE `formatproduit`
+  MODIFY `idFormatProduit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `produit`
+--
+ALTER TABLE `produit`
+  MODIFY `idProduit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`);
+
+--
+-- Contraintes pour la table `produit_categorie`
+--
+ALTER TABLE `produit_categorie`
+  ADD CONSTRAINT `produit_categorie_ibfk_1` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`),
+  ADD CONSTRAINT `produit_categorie_ibfk_2` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`);
+
+--
+-- Contraintes pour la table `produit_commande`
+--
+ALTER TABLE `produit_commande`
+  ADD CONSTRAINT `produit_commande_ibfk_1` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`),
+  ADD CONSTRAINT `produit_commande_ibfk_2` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`idCommande`),
+  ADD CONSTRAINT `produit_commande_ibfk_3` FOREIGN KEY (`idFormatProduit`) REFERENCES `formatproduit` (`idFormatProduit`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
