@@ -9,24 +9,40 @@ header {
 }
 
 .logoMovease{
-    width: 10vw;
-    height: auto;
+    height: 4em;
 }
 
+.panier{
+    height: 2.5em;
+
+}
+
+/* .internal-links a:hover{
+    transform: scale(1);
+} */
+
+a {
+    color: #fff;
+    padding: 10px;
+    top: 0px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1em;
+}
 a:hover{
     color: rgb(179, 16, 220);
     -webkit-transition: color 0.5s;
     transition: color 0.5s;
 }
 
-.lookingForBar{
-    justify-content: flex-end;
-    align-items: flex-end;
+/* .lookingForBar{
+  justify-content: flex-end;
+    align-items: flex-end; 
     position: relative;
-    left: 160px;
+    left: 10em;
     top: 10px;
     top: 0.3vw;
-}
+} */
 
 nav ul {
     margin-left: 23px;
@@ -53,12 +69,6 @@ nav ul li {
     right: -2px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-}
-
 .navBar {
     display: flex;
     justify-content: space-between;
@@ -78,6 +88,10 @@ input{
 .listNavBar{
     display: flex;
     align-items: flex-end;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+
 }
 
 .search-form img{
@@ -108,15 +122,4 @@ footer {
     width: 30px;
     margin-right: 10px;
     
-}
-
-.internal-links a{
-    color: white;
-    display: flex;
-    justify-content: flex-end;
-    text-decoration: none;
-}
-
-.internal-links a:hover{
-    transform: scale(1);
 }
