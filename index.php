@@ -36,7 +36,7 @@
 </head>
 <body>
     <?php include("header.html");?>
-    <img src="images/banniereMovEase.jpg" class ="banniere" alt="banniere du site Mov'Ease">
+    <img src="logos/banniereMovEase.jpg" class ="banniere" alt="banniere du site Mov'Ease">
     <br>
     <br>
     <div class="categories">
