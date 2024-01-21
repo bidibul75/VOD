@@ -53,7 +53,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($movies as $movie) { ?>
-                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>                
             </div>
         </div>
@@ -62,7 +62,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
             <br>
             <div class ="horizontalScroll"> 
             <?php foreach ($promotionMovies as $promotionMovie) { ?>
-                <a href="#"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -71,7 +71,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
             <br>
             <div class ="horizontalScroll">
                 <?php foreach ($actionMovies as $actionMovie) { ?>
-                <a href="#"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                    <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -80,7 +80,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($kidMovies as $kidMovie) { ?>
-                <a href="#"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -89,7 +89,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($fantasticMovies as $fantasticMovie) { ?>
-                <a href="#"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?> 
             </div>
         </div>
