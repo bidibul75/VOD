@@ -12,8 +12,6 @@
         $movie = $stmt->fetch(PDO::FETCH_ASSOC);
 
         print_r($movie);
-    } else {
-        echo"une erreur est survenue ...";
     }
 ?>
 
