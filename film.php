@@ -37,7 +37,10 @@
             <img src="<?= $movie["imageProduit"]?>" alt="affiche film" class ="filmPhoto">
         </div>
         <div class = "synopsis">
-            <p><?= $movie["synopsis"]?></p>
+            <p>Synopsis : <br><?= $movie["synopsis"]?></p>
+        </div>
+        <div class="realisateur">
+           <p>Réalisateur : </p><h4><?= $movie["realisateur"]?></h4>
         </div>
         <div class = "boutons">
             <button>Achat : <?= $movie["prixAchat"] ?></button>
