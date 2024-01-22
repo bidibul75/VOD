@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - MovEase</title>
-    <link rel="stylesheet" href="CSS/header-footer.css">
+    <link rel="stylesheet" href="CSS/index.css">
 </head>
-<body>
-
-    
-        <?php include("header.html");?>
-    
-
+<body class="login">
+        <?php include("header.html");
+        ?>
     <main>
         <div class="login-container">
             <h2>Inscription à MovEase</h2>

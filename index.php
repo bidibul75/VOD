@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
+    echo "adminstrateur";
+}else {
+    echo "anonyne";
+}
+
     $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4","root","");
 
     $stmt = $dbh->query("SELECT * FROM produit ORDER BY nom");

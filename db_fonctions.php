@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "admin";
+$username = "admin";
+$password = "root";
 $dbname = "movease";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,18 +11,16 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     die("Connection failed: " . $conn->connect_error);
 }
 
-function resetPassword($email) {
+function reset_password($email) {
     global $conn;
 
-// Vous devez mettre en place la connexion à la base de données ici
+// mettre en place la connexion à la base de données ici
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer l'adresse e-mail fournie par l'utilisateur
     $email = $_POST["email"];
 
-    // Réinitialiser le mot de passe et envoyer un e-mail, etc.
-    // Vous devrez implémenter cette fonction en fonction de vos besoins
-    resetPassword($email);
+    reset_password($email);
 }
 
 
