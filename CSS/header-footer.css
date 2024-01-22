@@ -66,6 +66,7 @@ nav ul li {
     border-radius: 100%;
     position: relative;
     right: 15px;
+    right: -2px;
 }
 
 .navBar {
@@ -94,7 +95,9 @@ input{
 }
 
 .search-form img{
+    position: relative;
     width: 25px;
+    right: 5px;
 }
 
 .search-form button{
