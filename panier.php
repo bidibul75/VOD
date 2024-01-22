@@ -1,8 +1,5 @@
 <?php
     $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4","root","");
-    
-
-    
 
     $stmt = $dbh->query("SELECT * FROM produit ORDER BY nom");
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -35,8 +32,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="film.css">
     <title>Mov'Ease - Accueil</title>
+    <!-- favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="logos/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="logos/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="logos/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="logos/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="logos/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="logos/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="logos/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="logos/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logos/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="logos/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logos/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="logos/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logos/favicon/favicon-16x16.png">
+<link rel="manifest" href="logos/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="logos/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
 </head>
 <body>
     <?php include("header.php");?>
@@ -49,7 +64,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($movies as $movie) { ?>
-                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>                
             </div>
         </div>
@@ -58,7 +73,7 @@
             <br>
             <div class ="horizontalScroll"> 
             <?php foreach ($promotionMovies as $promotionMovie) { ?>
-                <a href="film.php?id=<?=$promotionMovie["idProduit"]?>"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="#"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -67,7 +82,7 @@
             <br>
             <div class ="horizontalScroll">
                 <?php foreach ($actionMovies as $actionMovie) { ?>
-                    <a href="film.php?id=<?=$actionMovie["idProduit"]?>"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="#"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -76,7 +91,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($kidMovies as $kidMovie) { ?>
-                <a href="film.php?id=<?=$kidMovie["idProduit"]?>"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="#"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -85,7 +100,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($fantasticMovies as $fantasticMovie) { ?>
-                <a href="film.php?id=<?=$fantasticMovie["idProduit"]?>"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="#"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?> 
             </div>
         </div>

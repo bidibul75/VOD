@@ -163,9 +163,6 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 (44, 'La Ligne Verte', 'Un gardien de prison découvre que l\'un de ses détenus possède un don surnaturel, ce qui affecte profondément la vie de tous les prisonniers.', 'Frank Darabont', 4.99, 7.99, 'images/img44.jpg'),
 (45, 'Forrest Gump', 'Forrest Gump, un homme avec un quotient intellectuel bas, raconte son histoire extraordinaire tout en participant à des événements historiques clés.', 'Robert Zemeckis', 4.99, 7.99, 'images/img45.jpg'),
 (46, 'Le Roi Lion', 'Le lionceau Simba doit faire face à des défis pour devenir le roi de la Terre des Lions après que son père, le roi Mufasa, soit tué par son oncle Scar.', 'Roger Allers, Rob Minkoff', 4.99, 7.99, 'images/img46.jpg');
-
--- --------------------------------------------------------
-
 INSERT INTO produit (nom, synopsis, realisateur, prixStream, prixAchat, imageProduit)
 VALUES
 ("Inception", "Dom Cobb est un voleur expérimenté qui vole des secrets en infiltrant le subconscient de ses cibles pendant qu'elles rêvent.", "Christopher Nolan", 4.99, 7.99, "images/img1"), -- action
@@ -456,5 +453,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
