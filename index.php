@@ -40,6 +40,7 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="film.css">
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>
