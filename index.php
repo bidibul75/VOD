@@ -25,7 +25,6 @@
 
     $dbh =null;
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="film.css">
+    <link rel="stylesheet" href="CSS/header-footer.css">
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>

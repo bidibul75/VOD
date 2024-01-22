@@ -14,7 +14,6 @@
         //print_r($movie);
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,7 +26,7 @@
     <link rel="stylesheet" href="film.css">
     <title><?= $movie["nom"]?></title>
 </head>
-<?php include("header.html") ?>
+<?php include("header.php") ?>
 <body>
     <div class="presentation">
         <div class ="titre">
