@@ -36,7 +36,7 @@
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>
-    <?php include("header.php");?>
+    <?php include("header.html");?>
     <img src="logos/banniereMovEase.jpg" class ="banniere" alt="banniere du site Mov'Ease">
     <br>
     <br>
