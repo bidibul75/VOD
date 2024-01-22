@@ -1,5 +1,5 @@
 <?php
-    print_r($_GET);
+    //print_r($_GET);
 
     if (isset($_GET["id"])) {
 
@@ -11,7 +11,7 @@
         $stmt->execute();
         $movie = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        print_r($movie);
+        //print_r($movie);
     }
 ?>
 
@@ -20,14 +20,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="film.css">
     <title><?= $movie["nom"]?></title>
 </head>
+<?php include("header.html") ?>
 <body>
-<h1><?= $movie["nom"]?> </h1>
-<p><?= $movie["synopsis"]?></p>
-<img src="<?= $movie["imageProduit"]?>" alt="affiche film">
-<button>Achat : <?= $movie["prixAchat"] ?></button>
-<button>Stream : <?= $movie["prixStream"]?></button>
-
+    <div class="presentation">
+        <div class ="titre">
+            <h1><?= $movie["nom"]?> </h1>
+        </div>
+        <div class ="photoFilm">
+            <img src="<?= $movie["imageProduit"]?>" alt="affiche film" class ="filmPhoto">
+        </div>
+        <div class = "synopsis">
+            <p><?= $movie["synopsis"]?></p>
+        </div>
+        <div class = "boutons">
+            <button>Achat : <?= $movie["prixAchat"] ?></button>
+            <button>Stream : <?= $movie["prixStream"]?></button>
+        </div>
+    </div>
+<?php include("footer.html") ?>
 </body>
 </html>
