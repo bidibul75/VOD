@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="film.css">
     <title>Mov'Ease - Accueil</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($movies as $movie) { ?>
-                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>                
             </div>
         </div>
@@ -54,7 +55,7 @@
             <br>
             <div class ="horizontalScroll"> 
             <?php foreach ($promotionMovies as $promotionMovie) { ?>
-                <a href="#"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $promotionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -63,7 +64,7 @@
             <br>
             <div class ="horizontalScroll">
                 <?php foreach ($actionMovies as $actionMovie) { ?>
-                <a href="#"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                    <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $actionMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -72,7 +73,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($kidMovies as $kidMovie) { ?>
-                <a href="#"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $kidMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             </div>
         </div>
@@ -81,7 +82,7 @@
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($fantasticMovies as $fantasticMovie) { ?>
-                <a href="#"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $fantasticMovie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?> 
             </div>
         </div>
