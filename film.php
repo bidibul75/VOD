@@ -24,10 +24,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="film.css">
+    <link rel="stylesheet" href="CSS/header-footer.css">
     <title><?= $movie["nom"]?></title>
 </head>
-<?php include("header.php") ?>
 <body>
+    <?php include("header.php") ?>
     <div class="presentation">
         <div class ="titre">
             <h1><?= $movie["nom"]?> </h1>
