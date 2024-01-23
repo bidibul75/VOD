@@ -40,7 +40,6 @@ $fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 
 $dbh = null;
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
