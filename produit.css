@@ -33,7 +33,7 @@ main {
     margin-bottom: 10px;
 }
 
-button {
+.details > button {
     background-color: #4CAF50;
     color: white;
     border: none;
