@@ -131,6 +131,3 @@ $dbh = null;
 </body>
 
 </html>
-</body>
-
-</html>
