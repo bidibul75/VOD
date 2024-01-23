@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur est déjà connecté, si oui, le rediriger vers une autre page
+if (isset($_SESSION['username'])) {
+    header("Location: index.php"); 
+    exit();
+}
+
+// Si le formulaire d'inscription est soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+
+    
+    if ($password === $confirm_password) {
+        // L'inscription est réussie, définir la variable de session et rediriger
+        $_SESSION['username'] = $username;
+        header("Location: pageLogin.php"); 
+        exit();
+    } else {
+        // Mot de passe non confirmé, afficher un message d'erreur par exemple
+        $error_message = "Les mots de passe ne correspondent pas. Veuillez réessayer.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +37,18 @@
     <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body class="login">
-        <?php include("header.html");
-        ?>
+    <?php include("header.html"); ?>
+
     <main>
         <div class="login-container">
             <h2>Inscription à MovEase</h2>
-            <form action="process_registration.php" method="post">
+            <?php
+            // Afficher un message d'erreur si nécessaire
+            if (isset($error_message)) {
+                echo "<p class='error'>$error_message</p>";
+            }
+            ?>
+            <form action="registerUser.php" method="post">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" required>
 
@@ -30,9 +66,8 @@
         </div>
     </main>
 
+    <?php include("footer.html");
+    ?>
     
-        <?php include("footer.html");?>
-    
-
 </body>
 </html>
