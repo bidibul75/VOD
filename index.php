@@ -112,12 +112,11 @@ $dbh = null;
                 </div>
         <div class="newProducts">
             <h2>Nouveautés</h2>
+            <br>
             <div class ="horizontalScroll">
-                <?php 
-                    $connexion->query($sql);
-                    $sth = $connexion->prepare($sql);
-                    $sth->execute();
-                ?>
+            <?php foreach ($movies as $movie) { ?>
+                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <?php } ?>                
             </div>
         <?php endforeach; ?>
     </div>
