@@ -7,6 +7,20 @@
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
+CREATE DATABASE movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
+CREATE DATABASE IF NOT EXISTS movease CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB;
+CREATE TABLE produit(
+    idProduit INT NOT NULL AUTO_INCREMENT,
+    nom VARCHAR (100) NOT NULL,
+    synopsis TEXT(500),
+	realisateur VARCHAR (30),
+	prixStream DECIMAL(6,2),
+	prixAchat DECIMAL(6,2),
+	prixAchat FLOAT,
+	prixStream FLOAT,
+	PRIMARY KEY(idProduit)
+	imageProduit VARCHAR(50),
+);
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -147,9 +161,24 @@ INSERT INTO `produit` (`idProduit`, `nom`, `synopsis`, `realisateur`, `prixStrea
 (44, 'La Ligne Verte', 'Un gardien de prison découvre que l\'un de ses détenus possède un don surnaturel, ce qui affecte profondément la vie de tous les prisonniers.', 'Frank Darabont', 4.99, 7.99, 'images/img44.jpg'),
 (45, 'Forrest Gump', 'Forrest Gump, un homme avec un quotient intellectuel bas, raconte son histoire extraordinaire tout en participant à des événements historiques clés.', 'Robert Zemeckis', 4.99, 7.99, 'images/img45.jpg'),
 (46, 'Le Roi Lion', 'Le lionceau Simba doit faire face à des défis pour devenir le roi de la Terre des Lions après que son père, le roi Mufasa, soit tué par son oncle Scar.', 'Roger Allers, Rob Minkoff', 4.99, 7.99, 'images/img46.jpg');
-
--- --------------------------------------------------------
-
+CREATE TABLE commande(
+    idCommande INT NOT NULL AUTO_INCREMENT,
+    prixTotal FLOAT,
+    prixTotal DECIMAL(6,2),
+    idUtilisateur INT NOT NULL,
+    adresseLivraison VARCHAR(150),
+    codePostalLivraison VARCHAR (5),
+    villeLivraison VARCHAR (50),
+	PRIMARY KEY (idCommande),
+	FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+    );
+     
+);
+    nom VARCHAR(30) NOT NULL,
+    PRIMARY KEY (idFormatProduit)
+    idFormatProduit INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE formatProduit(
+-- Le format du produit en vente	 
 --
 -- Structure de la table `produit_categorie`
 --
@@ -233,6 +262,14 @@ CREATE TABLE `produit_commande` (
   `idFormatProduit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+);
+	FOREIGN KEY(idCommande) REFERENCES commande(idCommande),
+	FOREIGN KEY(idFormatProduit) REFERENCES formatProduit(idFormatProduit)
+	FOREIGN KEY (idProduit) REFERENCES produit(idProduit),
+	idFormatProduit INT NOT NULL,
+    idCommande INT NOT NULL,
+    idProduit INT NOT NULL,
+CREATE TABLE produit_commande(
 -- --------------------------------------------------------
 
 --
