@@ -97,5 +97,9 @@ if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
     <br>
     <br>
     <?php include("footer.html");?>
+    <footer>
+        <?php include("footer.html");
+        ?>
+    </footer>
 </body>
 </html>
