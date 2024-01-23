@@ -115,7 +115,7 @@ $dbh = null;
             <br>
             <div class ="horizontalScroll">
             <?php foreach ($movies as $movie) { ?>
-                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>                
             </div>
         <?php endforeach; ?>
