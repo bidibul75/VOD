@@ -110,6 +110,12 @@ $dbh = null;
                         <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
                     <?php endforeach; ?>
                 </div>
+        <div class="newProducts">
+            <h2>Nouveautés</h2>
+            <div class ="horizontalScroll">
+                <?php 
+                //new mysqli("exemple@xyz","Xalos","12345","movease");
+                ?>
             </div>
         <?php endforeach; ?>
     </div>
@@ -120,6 +126,7 @@ $dbh = null;
 
 
     <?php include("footer.html"); ?>
+    <?php include("footer.html");?>
 </body>
 
 </html>
