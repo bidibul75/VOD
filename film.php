@@ -1,6 +1,6 @@
 <?php
     //print_r($_GET);
-
+    
     if (isset($_GET["id"])) {
 
         $id = $_GET["id"];
@@ -23,12 +23,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="film.css">
+    <link rel="stylesheet" href="CSS/film.css">
     <link rel="stylesheet" href="CSS/header-footer.css">
     <title><?= $movie["nom"]?></title>
 </head>
 <body>
-    <?php include("header.php") ?>
+    <?php include("private/header.php") ?>
     <div class="presentation">
         <div class ="titre">
             <h1><?= $movie["nom"]?> </h1>

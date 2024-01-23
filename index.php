@@ -1,4 +1,5 @@
 <?php
+
 function getMoviesByCategory(PDO $dbh, $categoryName)
 {
     $stmt = $dbh->prepare("SELECT * FROM produit AS p 
@@ -57,7 +58,7 @@ $dbh = null;
 </head>
 
 <body>
-    <?php include("header.php"); ?>
+    <?php include("private/header.php") ?>
     <img src="logos/banniereMovEase.jpg" class="banniere" alt="banniere du site Mov'Ease">
     <br>
     <br>

@@ -12,24 +12,23 @@
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page films</title>
-    <link rel="stylesheet" href="produit.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="film.css">
+    <title><?= $movies[0]['nomGenre']?></title>
+    <link rel="stylesheet" href="CSS/produit.css">
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="CSS/film.css">
     <link rel="stylesheet" href="CSS/header-footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php include("header.php") ?>
+    <?php include("private/header.php") ?>
     <main>
         <?php foreach ($movies as $movie) { ?>                
             <article class="product">
@@ -45,6 +44,6 @@
             </article>
         <?php } ?>
     </main>
-    <?php include("footer.html") ?>
+    <?php include("private/footer.html") ?>
 </body>
 </html>

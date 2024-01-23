@@ -19,7 +19,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header>
   <div class="navBar">
     <div>
-      <a href="index.php"><img src="logos/logo_bright_bg.svg" alt="Logo du site" class="logoMovease" /></a>
+      <a href="index.php"><img src="logos/logo_dark_bg.svg" alt="Logo du site" class="logoMovease" /></a>
     </div>
     <div class="listNavBar">
       <?php foreach ($categories as $categorieHeader) { ?>
