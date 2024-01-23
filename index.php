@@ -4,6 +4,13 @@ $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", 
 session_start();
 
 
+    try {
+        $connexion = new PDO("$db", $user, $pwd) or die();
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Une erreur est survenue lors de la connexion : ". $e->getMessage() . "</br>";
+        die();
+    }
 
 if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array();
@@ -85,7 +92,9 @@ $dbh = null;
                 <?php } ?>
             <div class ="horizontalScroll">
                 <?php 
-                //new mysqli("exemple@xyz","Xalos","12345","movease");
+                    $connexion->query($sql);
+                    $sth = $connexion->prepare($sql);
+                    $sth->execute();
                 ?>
             </div>
         </div>
