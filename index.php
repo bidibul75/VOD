@@ -43,7 +43,6 @@ $fantasticMovies = $stmtFantastique->fetchAll(PDO::FETCH_ASSOC);
 
 $dbh = null;
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -55,6 +54,7 @@ $dbh = null;
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="film.css">
+    <link rel="stylesheet" href="CSS/header-footer.css">
     <title>Mov'Ease - Accueil</title>
     <link rel="apple-touch-icon" sizes="57x57" href="logos/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="logos/favicon/apple-icon-60x60.png">

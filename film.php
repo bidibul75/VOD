@@ -14,7 +14,6 @@ if (isset($_GET["id"])) {
     //print_r($movie);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
