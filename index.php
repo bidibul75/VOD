@@ -1,23 +1,14 @@
 <?php
-session_start();
-
-if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
-    echo "adminstrateur";
-}else {
-    echo "anonyme";
+function getMoviesByCategory(PDO $dbh, $categoryName)
+{
+    $stmt = $dbh->prepare("SELECT * FROM produit AS p 
+        INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
+        INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie 
+        WHERE c.nom = :categoryName");
+    $stmt->bindParam(":categoryName", $categoryName);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-session_start();
-
-if( isset($_SESSION['admin']) and  ($_SESSION['admin'] ==true)) {
-    echo "adminstrateur";
-}else {
-    echo "anonyne";
-}
-
-    $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4","root","");
-
-    $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4","root","");
-    
 
 function searchMovies(PDO $dbh, $research)
 {
@@ -106,11 +97,11 @@ $dbh = null;
     </div>
     <br>
     <br>
-    <?php include("footer.html");?>
-    <footer>
-        <?php include("footer.html");
-        ?>
-    </footer>
+<?php endif; ?>
+
+
+
+    <?php include("footer.html"); ?>
 </body>
 
 </html>
