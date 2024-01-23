@@ -63,6 +63,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </header>
-</body>
+<!-- </body>
 
-</html>
+</html> -->
