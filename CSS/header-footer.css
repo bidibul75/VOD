@@ -66,6 +66,7 @@ nav ul li {
     border-radius: 100%;
     position: relative;
     right: 15px;
+    right: -2px;
 }
 
 .navBar {
