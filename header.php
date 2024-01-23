@@ -12,7 +12,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="listNavBar">
       <?php foreach ($categories as $categorieHeader) { ?>
-        <a href="#"><?php echo $categorieHeader["nom"] ?></a>
+        <a href="categorie.php?id=<?=$categorieHeader["idCategorie"]?>"><?php echo $categorieHeader["nom"] ?></a>
       <?php } ?>
     </div>
 

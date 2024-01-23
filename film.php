@@ -32,6 +32,7 @@ if (isset($_GET["id"])) {
 <?php include("header.php") ?>
 
 <body>
+    <?php include("header.php") ?>
     <div class="presentation">
         <div class="titre">
             <h1><?= $movie["nom"] ?> </h1>
