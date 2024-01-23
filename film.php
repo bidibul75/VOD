@@ -47,11 +47,11 @@ if (isset($_GET["id"])) {
 <?php $infoStream="stream".$movie["idProduit"]."*".$movie["prixStream"];?>
 
         <div class="boutons">
-            <form action="./ajouterPanier.php" method="GET">
+            <form action="./panier.php" method="GET">
                 <button class="btn btn-primary" type="submit" name="choix" value="<?=$infoAchat;?>">Achat : <?= $movie["prixAchat"] . " €" ?></button>
             </form>
             &nbsp;&nbsp;&nbsp;
-            <form action="./ajouterPanier.php" method="GET">
+            <form action="./panier.php" method="GET">
                 <button class="btn btn-primary" type="submit" name="choix" value="<?=$infoStream;?>">Stream : <?= $movie["prixStream"] . " €" ?></button>
             </form>
         </div>
