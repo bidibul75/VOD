@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/login.css">
     <title>Login - MovEase</title>
     <link rel="stylesheet" href="CSS/header-footer.css">
 </head>
@@ -23,7 +24,7 @@
                 <div class="additional-options">
                     <a href="forgot_password.php">Mot de passe oublié?</a>
                     <br>
-                    <a href="register.php">Je n'ai pas de compte</a>
+                    <a href="registerUser.php">Je n'ai pas de compte</a>
                 </div>
 
                 <button type="submit">Se connecter</button>

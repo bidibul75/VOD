@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - MovEase</title>
     <link rel="stylesheet" href="CSS/header-footer.css">
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
 
@@ -28,7 +29,7 @@
                 <label for="confirm_password">Confirmer le mot de passe :</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
 
-                <button type="submit">S'inscrire</button>
+                <button type="submit" name ='valider'>S'inscrire</button>
             </form>
         </div>
     </main>
