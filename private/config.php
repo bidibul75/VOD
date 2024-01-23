@@ -1,5 +1,4 @@
 <?php
-// config.php
 return [
     'db_host' => 'localhost',
     'db_username' => 'root',
