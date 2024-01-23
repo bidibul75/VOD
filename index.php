@@ -114,7 +114,9 @@ $dbh = null;
             <h2>Nouveautés</h2>
             <div class ="horizontalScroll">
                 <?php 
-                //new mysqli("exemple@xyz","Xalos","12345","movease");
+                    $connexion->query($sql);
+                    $sth = $connexion->prepare($sql);
+                    $sth->execute();
                 ?>
             </div>
         <?php endforeach; ?>
