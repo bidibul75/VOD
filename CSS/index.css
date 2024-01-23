@@ -90,6 +90,7 @@ input {
 .additional-options a {
     color: #41379a;
     text-decoration: none;
+    text-align: justify;
 }
 
 .additional-options a:hover {
@@ -104,3 +105,22 @@ footer {
     padding: 10px;
 }
 
+.logout-container {
+    margin-left: auto; /* Pousse le conteneur à droite du header */
+    display: flex;
+    align-items: center; /* Centre le contenu verticalement */
+}
+
+.logout {
+    background-color: #ff4646;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logout:hover {
+    background-color: #e51c1c;
+}
