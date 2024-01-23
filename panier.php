@@ -106,6 +106,12 @@ if (isset($_GET['choix'])) {
 
     <br>
     <?php include("footer.html"); ?>
+    <?php include("header.php");?>
+    
+    
+
+    <br>
+    <?php include("footer.html");?>
 </body>
 
 </html>
