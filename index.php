@@ -3,14 +3,16 @@ $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", 
 
 session_start();
 
+    $stmt = $dbh->query("SELECT * FROM produit ORDER BY nom");
+    $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    try {
-        $connexion = new PDO("$db", $user, $pwd) or die();
-        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        echo "Une erreur est survenue lors de la connexion : ". $e->getMessage() . "</br>";
-        die();
-    }
+    $stmtAction = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
+    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'action' ");
+    $actionMovies = $stmtAction->fetchAll(PDO::FETCH_ASSOC);
+    //var_dump($movies);
+    $stmtPromotions = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
+    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'promotions' ");
+    $promotionMovies = $stmtPromotions->fetchAll(PDO::FETCH_ASSOC);
 
 if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array();
@@ -91,11 +93,9 @@ $dbh = null;
                     <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
                 <?php } ?>
             <div class ="horizontalScroll">
-                <?php 
-                    $connexion->query($sql);
-                    $sth = $connexion->prepare($sql);
-                    $sth->execute();
-                ?>
+            <?php foreach ($movies as $movie) { ?>
+                <a href="#"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
+                <?php } ?>                
             </div>
         </div>
         <div class="promotions">
