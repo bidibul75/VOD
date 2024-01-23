@@ -1,48 +1,46 @@
 <?php
+function getMoviesByCategory(PDO $dbh, $categoryName)
+{
+    $stmt = $dbh->prepare("SELECT * FROM produit AS p 
+        INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
+        INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie 
+        WHERE c.nom = :categoryName");
+    $stmt->bindParam(":categoryName", $categoryName);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function searchMovies(PDO $dbh, $research)
+{
+    $stmt = $dbh->prepare("SELECT * FROM produit WHERE nom LIKE :research");
+    $researchParam = "%$research%";
+    $stmt->bindValue(":research", $researchParam);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", "root", "");
 
-session_start();
+$research = isset($_GET["search"]) ? $_GET["search"] : "";
+$search = isset($_GET["valider"]) ? $_GET["valider"] : "";
 
-    $stmt = $dbh->query("SELECT * FROM produit ORDER BY nom");
-    $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$aFaitUneRecherche = !empty($research);
+$movies = [];
 
-    $stmtAction = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'action' ");
-    $actionMovies = $stmtAction->fetchAll(PDO::FETCH_ASSOC);
-    //var_dump($movies);
-    $stmtPromotions = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'promotions' ");
-    $promotionMovies = $stmtPromotions->fetchAll(PDO::FETCH_ASSOC);
+if ($aFaitUneRecherche) {
+    $movies = searchMovies($dbh, $research);
+} else {
+    $movies = getMoviesByCategory($dbh, 'action');
+}
 
-if (!isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = array();
-};
-
-
-// array_push($_SESSION['panier'], "apple", "raspberry");
-
-
-$stmt = $dbh->query("SELECT * FROM produit ORDER BY nom");
-$movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$stmtAction = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'action' ");
-$actionMovies = $stmtAction->fetchAll(PDO::FETCH_ASSOC);
-//var_dump($movies);
-$stmtPromotions = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'promotions' ");
-$promotionMovies = $stmtPromotions->fetchAll(PDO::FETCH_ASSOC);
-
-$stmtEnfants = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'jeunesse' ");
-$kidMovies = $stmtEnfants->fetchAll(PDO::FETCH_ASSOC);
-
-$stmtFantastique = $dbh->query("SELECT * FROM produit AS p INNER JOIN produit_categorie AS p_c ON p.idProduit = p_c.idProduit 
-    INNER JOIN categorie AS c ON c.idCategorie = p_c.idCategorie WHERE c.nom = 'Fantastique' ");
-$fantasticMovies = $stmtFantastique->fetchAll(PDO::FETCH_ASSOC);
+$promotionMovies = getMoviesByCategory($dbh, 'promotions');
+$suspenseMovies = getMoviesByCategory($dbh,'suspense');
+$kidMovies = getMoviesByCategory($dbh, 'jeunesse');
+$fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 
 $dbh = null;
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -81,64 +79,47 @@ $dbh = null;
     <img src="logos/banniereMovEase.jpg" class="banniere" alt="banniere du site Mov'Ease">
     <br>
     <br>
-    <?= "panier" . $_SESSION['panier'][0]; ?>
 
+    <?php if ($aFaitUneRecherche) : ?>
+    <h1>Résultats de recherche pour "<?= htmlspecialchars($research) ?>"</h1>
+    <div class="horizontalScroll">
+        <?php foreach ($movies as $movie) : ?>
+            <article class="product">
+                <a href="film.php?id=<?= $movie["idProduit"] ?>">
+                    <img src="<?= $movie["imageProduit"] ?>" alt="<?= $movie["nom"] ?>" class="affiche">
+                </a>
+                <div class="details">
+                    <h1><?= $movie["nom"] ?></h1>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
 
+    <?php else: ?>
     <div class="categories">
-        <div class="newProducts">
-            <h2>Nouveautés</h2>
-            <br>
-            <div class="horizontalScroll">
-                <?php foreach ($movies as $movie) { ?>
-                    <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>
-            <div class ="horizontalScroll">
-            <?php foreach ($movies as $movie) { ?>
-                <a href="film.php?id=<?=$movie["idProduit"]?>"><img src="<?= $movie["imageProduit"]?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>                
+        <?php
+        $categories = ['Promotions' => $promotionMovies, 'Suspense' => $suspenseMovies, 'Action' => $movies, 'Enfants' => $kidMovies, 'Fantastique' => $fantasticMovies];
+
+        foreach ($categories as $categoryName => $categoryMovies) :
+        ?>
+            <div class="<?= strtolower(str_replace(' ', '', $categoryName)) . 'Type' ?>">
+                <h2><?= $categoryName ?></h2>
+                <br>
+                <div class="horizontalScroll">
+                    <?php foreach ($categoryMovies as $movie) : ?>
+                        <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-        <div class="promotions">
-            <h2>Promotions</h2>
-            <br>
-            <div class="horizontalScroll">
-                <?php foreach ($promotionMovies as $promotionMovie) { ?>
-                    <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $promotionMovie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="actionType">
-            <h2>Action</h2>
-            <br>
-            <div class="horizontalScroll">
-                <?php foreach ($actionMovies as $actionMovie) { ?>
-                    <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $actionMovie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="kidsType">
-            <h2>Enfants</h2>
-            <br>
-            <div class="horizontalScroll">
-                <?php foreach ($kidMovies as $kidMovie) { ?>
-                    <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $kidMovie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="fantasticType">
-            <h2>Fantastique</h2>
-            <br>
-            <div class="horizontalScroll">
-                <?php foreach ($fantasticMovies as $fantasticMovie) { ?>
-                    <a href="film.php?id=<?= $movie["idProduit"] ?>"><img src="<?= $fantasticMovie["imageProduit"] ?>" alt="affiche film" class="affiche"></a>
-                <?php } ?>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <br>
     <br>
+<?php endif; ?>
+
+
+
     <?php include("footer.html"); ?>
-    <?php include("footer.html");?>
 </body>
 
 </html>
