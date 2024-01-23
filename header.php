@@ -1,6 +1,17 @@
 <?php
 $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", "root", "");
+$research = $_GET["search"];
+$search = $_GET["valider"];
 
+if (isset($search)&& !empty(trim($research)))  {
+  $res = $dbh->prepare("SELECT * FROM produit WHERE nom LIKE :research");
+  // Utilisez le paramètre lié pour la recherche
+  $res->bindParam(":research", $research, PDO::PARAM_STR);
+  $res -> setFetchMode(PDO::FETCH_ASSOC);
+  $res->execute();
+  $tab= $res->fetchAll(PDO::FETCH_ASSOC);
+
+}
 $stmt = $dbh->query("SELECT * FROM categorie ORDER BY nom");
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,10 +28,10 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="lookingForBar">
-      <form action="#" method="get" class="search-form">
+      <form action="index.php" method="get" class="search-form">
         <input type="text" name="search" placeholder="Rechercher..." />
         <div>
-          <button type="submit">
+          <button type="submit" name="valider">
             <img src="logos/loupe.png" alt="rechercher"/>
           </button>
         </div>
