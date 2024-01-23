@@ -40,6 +40,7 @@ $fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 
 $dbh = null;
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -126,7 +127,6 @@ $dbh = null;
 
 
     <?php include("footer.html"); ?>
-    <?php include("footer.html");?>
 </body>
 
 </html>
