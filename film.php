@@ -40,8 +40,11 @@ if (isset($_GET["id"])) {
         <div class="photoFilm">
             <img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="filmPhoto">
         </div>
-        <div class="synopsis">
-            <p><?= $movie["synopsis"] ?></p>
+        <div class = "synopsis">
+            <p>Synopsis : <br><?= $movie["synopsis"]?></p>
+        </div>
+        <div class="realisateur">
+           <p>Réalisateur : </p><h4><?= $movie["realisateur"]?></h4>
         </div>
 <?php $infoAchat="achat".$movie["idProduit"]."*".$movie["prixAchat"];?>
 <?php $infoStream="stream".$movie["idProduit"]."*".$movie["prixStream"];?>
