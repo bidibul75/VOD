@@ -19,8 +19,6 @@ CREATE TABLE produit(
 	realisateur VARCHAR (30),
 	prixStream DECIMAL(6,2),
 	prixAchat DECIMAL(6,2),
-	prixStream FLOAT,
-	prixAchat FLOAT,
 	imageProduit VARCHAR(50),
 	PRIMARY KEY(idProduit)
 );
