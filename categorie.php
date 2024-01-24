@@ -69,11 +69,11 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php $infoAchat = "achat" . $movie["idProduit"] . "*" . $movie["prixAchat"]; ?>
                     <?php $infoStream = "stream" . $movie["idProduit"] . "*" . $movie["prixStream"]; ?>
                     <div>
-                        <form action="./panier.php" method="GET">
+                        <form action="panier.php" method="GET">
                             <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoAchat; ?>">Achat : <?= $movie["prixAchat"] . " €" ?></button>
                         </form>
                         &nbsp;&nbsp;&nbsp;
-                        <form action="./panier.php" method="GET">
+                        <form action="panier.php" method="GET">
                             <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoStream; ?>">Stream : <?= $movie["prixStream"] . " €" ?></button>
                         </form>
                     </div>

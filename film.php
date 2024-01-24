@@ -30,7 +30,6 @@
 
     <!-- Boostrap -->
     <link rel="stylesheet" href="CSS/bootstrap.css">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="logos/favicon/apple-icon-57x57.png">

@@ -19,7 +19,7 @@ function getMoviesByCategory(PDO $dbh, $categoryName)
 
 function searchMovies(PDO $dbh, $research)
 {
-    $stmt = $dbh->prepare("SELECT * FROM produit WHERE nom LIKE :research");
+    $stmt = $dbh->prepare("SELECT * FROM produit WHERE nom LIKE :research GROUP BY nom");
     $researchParam = "%$research%";
     $stmt->bindValue(":research", $researchParam);
     $stmt->execute();
