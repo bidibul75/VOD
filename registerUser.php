@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body class="login">
-    <?php include("header.html"); ?>
+     <?php include("header.php"); ?>
 
     <main>
         <div class="login-container">
@@ -68,6 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include("footer.html");
     ?>
-    
+
 </body>
 </html>
