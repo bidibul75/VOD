@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function getMoviesByCategory(PDO $dbh, $categoryName)
 {
     $stmt = $dbh->prepare("SELECT * FROM produit AS p 
@@ -40,7 +40,7 @@ $kidMovies = getMoviesByCategory($dbh, 'jeunesse');
 $fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 
 
-    var_dump($_SESSION['admin']);
+   // var_dump($_SESSION['admin']);
 
 
 $connected = false;

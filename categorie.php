@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $idCategorie = $_GET["id"];
 
 //print_r($idCategorie);
@@ -29,7 +29,7 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Boostrap -->
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="logos/favicon/apple-icon-57x57.png">

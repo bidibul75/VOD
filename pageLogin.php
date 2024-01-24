@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (isset($_SESSION['admin'])) {
     header("Location: index.php"); 
     exit();
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Identifiants incorrects. Veuillez réessayer.";
     }
 }
-
+var_dump($_SESSION['admin']);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - MovEase</title>
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/login.css">
+    <!--<link rel="stylesheet" href="CSS/login.css">-->
+    <link rel="stylesheet" href="CSS/header-footer.css">
 </head>
 <body class="login">
     <?php include("private/header.php");
