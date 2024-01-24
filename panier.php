@@ -123,7 +123,7 @@ if (isset($_GET['choix'])) {
 <body>
 
 
-    <?php include("header.php"); ?>
+    <?php include("private/header.php"); ?>
     <div class="container">
         <p class="h1">Panier</p>
         <?= $messageAchat; ?>
@@ -172,7 +172,7 @@ if (isset($_GET['choix'])) {
 
     </div>
     <br>
-    <?php include("footer.html"); ?>
+    <?php include("private/footer.html"); ?>
 </body>
 
 </html>
