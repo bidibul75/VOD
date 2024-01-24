@@ -42,24 +42,41 @@ function prixFilmAchete($choix, $numero)
     return $prix_film;
 };
 
+function extractionNomFilm($numeroFilm)
+{
+    $pdo = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", "root", "");
+
+    $query = $pdo->prepare("SELECT produit.nom FROM produit WHERE idProduit = :numeroFilm");
+    $query->bindParam(':numeroFilm', $numeroFilm, PDO::PARAM_INT);
+    $query->execute();
+
+    $resultat = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $resultat['nom'];
+};
+
 if (isset($_GET['choix'])) {
     $choix = $_GET['choix'];
 
-    $typeAchat = formatObjetAchete($choix);
-    $choix = retraitDebutChaine($choix, strlen($typeAchat));
-
-    $numeroDeFilmAchete = numeroDeFilm($choix);
-
-    $prixFilmAchete = prixFilmAchete($choix, $numeroDeFilmAchete);
-    if ($typeAchat == "achat") {
-        $messageAchat = "Vous avez acheté le film n° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
+    if ($choix == "delete") {
+        unset($_SESSION['panier']);
     } else {
-        $messageAchat = "Vous avez acheté le streaming du film N° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
-    };
+        $typeAchat = formatObjetAchete($choix);
+        $choix = retraitDebutChaine($choix, strlen($typeAchat));
 
-    // $_SESSION['panier'] = ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete];
-    array_push($_SESSION['panier'], ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]);
-    $_GET['choix'] = null;
+        $numeroDeFilmAchete = numeroDeFilm($choix);
+
+        $prixFilmAchete = prixFilmAchete($choix, $numeroDeFilmAchete);
+        if ($typeAchat == "achat") {
+            $messageAchat = "Vous avez acheté le film n° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
+        } else {
+            $messageAchat = "Vous avez acheté le streaming du film N° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
+        };
+
+        // $_SESSION['panier'] = ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete];
+        array_push($_SESSION['panier'], ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]);
+        $_GET['choix'] = null;
+    }
 } else {
     $messageAchat = "";
 };
@@ -107,29 +124,53 @@ if (isset($_GET['choix'])) {
 
 
     <?php include("header.php"); ?>
+    <div class="container">
+        <p class="h1">Panier</p>
+        <?= $messageAchat; ?>
+        <br><br>
+        <p>Votre panier est actuellement composé des films suivants :</p>
 
-    <h1>Panier</h1>
-    <?= $messageAchat; ?>
 
-    <p>Votre panier est actuellement composé des films suivants :</p>
+        <?php
 
-    <?php
+        echo '<table class="table">';
+        echo '<thead><tr><th>Nom du film</th><th>Format d\'achat</th><th>Prix</th></tr></thead></tbody>';
+        $prixTotal = 0;
 
-    echo '<table class="table">';
-    echo '<thead><tr><th>code film</th><th>format d\'achat</th><th>Prix</th></tr></thead></tbody>';
-
-    foreach ($_SESSION['panier'] as $liste) {
-
-        foreach ($liste as $element) {
-            echo '<td>' . $element . '</td>';
+        foreach ($_SESSION['panier'] as $liste) {
+            $i = 1;
+            foreach ($liste as $element) {
+                if ($i == 1) {
+                    $element = extractionNomFilm(intval($element));
+                    $i = 0;
+                };
+                echo '<td>' . $element . '</td>';
+            };
+            $prixTotal += floatval($element);
+            echo '</tr>';
         };
-        echo '</tr>';
-    };
+        echo '<tfoot><tr><td></td><th>Total :</th><th>', $prixTotal, '</th></tfoot>';
 
-    echo '</table>';
-    ?>
+        echo '</table>';
+        ?>
+
+        <div class="row">
+            <div class="col-sm-6 bg-transparent text-white p-3">
+                <form action="./panier.php" method="GET">
+                    <button class="btn btn-primary" type="submit" name="choix" value="delete">Annuler le panier</button>
+                </form>
+            </div>
+            <div class="col-sm-6 bg-transparent text-white p-3">
+                <form action="./paiement.php" method="GET">
+                    <button class="btn btn-primary" type="submit" name="choix" value="">Procéder au paiement
+                </form>
+            </div>
 
 
+        </div>
+
+
+    </div>
     <br>
     <?php include("footer.html"); ?>
 </body>

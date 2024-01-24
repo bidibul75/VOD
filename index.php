@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] []= array();
 };
-print_r( $_SESSION['panier']);
 
 function getMoviesByCategory(PDO $dbh, $categoryName)
 {

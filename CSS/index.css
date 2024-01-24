@@ -23,3 +23,7 @@
     flex-direction: row;
     overflow-y: hidden;
 }
+
+.total {
+    font-size: 2em;
+}
