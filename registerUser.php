@@ -10,7 +10,7 @@
 <body>
 
     
-        <?php include("header.html");?>
+        <?php include("private/header.php");?>
     
 
     <main>
@@ -35,7 +35,7 @@
     </main>
 
     
-        <?php include("footer.html");?>
+        <?php include("private/footer.html");?>
     
 
 </body>

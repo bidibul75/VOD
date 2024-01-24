@@ -39,6 +39,9 @@ $suspenseMovies = getMoviesByCategory($dbh,'suspense');
 $kidMovies = getMoviesByCategory($dbh, 'jeunesse');
 $fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 
+if($_SESSION['admin'] = true){
+    print_r($_SESSION['admin']);
+}
 
 $connected = false;
 $dbh = null;
