@@ -104,10 +104,15 @@ $dbh = null;
     <br>
     <br>
 <?php endif; ?>
+<?php if(isset($_SESSION["admin"])) {?>
+        <div class="gestionFilm">
+            <button class="button-3" role="button">+</button>  
+            <button class="button-3" role="button">-</button> 
+        </div>
+<?php } ?>
 
 
-
-    <?php include("footer.html"); ?>
+    <?php include("private/footer.html"); ?>
 </body>
 
 </html>

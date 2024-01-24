@@ -56,6 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Se connecter</button>
             </form>
         </div>
+        <?php if(isset($_SESSION["admin"])) {?>
+            <button>+</button>  
+            <button>-</button> 
+        <?=}?>
     </main>
     
     <?php include("footer.html");?>
