@@ -94,7 +94,6 @@ if (isset($_GET['choix'])) {
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/header-footer.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
 
 

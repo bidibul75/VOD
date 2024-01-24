@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - MovEase</title>
     <link rel="stylesheet" href="CSS/header-footer.css">
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
 
-    <?php include("header.html");?>
+    <?php include("private/header.php");?>
 
      <main>
         <div class="login-container">
@@ -31,7 +32,7 @@
         </div>
     </main>
     
-    <?php include("footer.html");?>
+    <?php include("private/footer.html");?>
     
 </body>
 </html>
