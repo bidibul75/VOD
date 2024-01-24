@@ -60,7 +60,7 @@ if (isset($_GET['choix'])) {
 
     if ($choix == "delete") {
         unset($_SESSION['panier']);
-    } else if ($_GET['choix'] !="PanierTraite"){
+    } else {
         $typeAchat = formatObjetAchete($choix);
         $choix = retraitDebutChaine($choix, strlen($typeAchat));
 
@@ -74,8 +74,12 @@ if (isset($_GET['choix'])) {
         };
 
         // $_SESSION['panier'] = ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete];
-        array_push($_SESSION['panier'], ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]);
-        $_GET['choix']="PanierTraite";
+        if (end($_SESSION['panier'])!= ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]){
+            array_push($_SESSION['panier'], ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]);
+
+        }
+        
+        // $_GET['choix']="PanierTraite";
     }
 } else {
     $messageAchat = "";
