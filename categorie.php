@@ -29,7 +29,6 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Boostrap -->
-    <link rel="stylesheet" href="CSS/bootstrap.css">
     <link rel="stylesheet" href="CSS/bootstrap.min.css">
 
     <!-- favicons -->

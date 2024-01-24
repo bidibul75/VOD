@@ -44,7 +44,9 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div>
       <button class="login">
-        <img src="logos/blank-avatar.png" alt="connexion"/>
+        <a href="pageLogin.php">
+          <img src="logos/blank-avatar.png" alt="connexion"/>
+        </a>
       </button>
     </div>
   </div>
