@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Identifiants incorrects. Veuillez réessayer.";
     }
 }
-var_dump($_SESSION['admin']);
 ?>
 
 <!DOCTYPE html>

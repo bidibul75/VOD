@@ -46,7 +46,6 @@ $fantasticMovies = getMoviesByCategory($dbh, 'Fantastique');
 $connected = false;
 $dbh = null;
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 

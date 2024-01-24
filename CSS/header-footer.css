@@ -17,6 +17,10 @@ header {
 
 }
 
+.connexion > img {
+    height: 2px;
+}
+
 /* .internal-links a:hover{
     transform: scale(1);
 } */

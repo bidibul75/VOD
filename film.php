@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/film.css">
     <link rel="stylesheet" href="CSS/header-footer.css">
-    <title><?= $movie["nom"] ?></title>
+    <title> Mov'Ease - <?=$movie["nom"] ?></title>
 
     <!-- Boostrap -->
     <link rel="stylesheet" href="CSS/bootstrap.css">
@@ -60,7 +60,7 @@
             <h1><?= $movie["nom"] ?> </h1>
         </div>
         <div class="photoFilm">
-            <img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="filmPhoto">
+            <img src="<?=$movie["imageProduit"] ?>" alt="affiche film" class="filmPhoto">
         </div>
         <div class="synopsis">
             <p>Synopsis : <br><?= $movie["synopsis"] ?></p>
