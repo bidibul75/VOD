@@ -5,13 +5,6 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
 main {
     display: flex;
     justify-content: center;
@@ -50,7 +43,7 @@ input {
     border-radius: 4px;
 }
 
-button {
+.boutonConnecter {
     color: white;
     border: none;
     padding: 10px;
@@ -59,7 +52,7 @@ button {
     border-radius: 4px;
 }
 
-button:hover {
+.boutonConnecter:hover {
     background-color: #c4cd47;
 }
 

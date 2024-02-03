@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($username === $valid_username && $password === $valid_password) {
         // L'utilisateur est authentifié, vous pouvez rediriger vers la page d'accueil ou effectuer d'autres actions
-        header("Location: index.html");
+        header("Location: index.php");
         exit();
     } else {
         // Mauvaises informations d'identification, afficher un message d'erreur ou rediriger vers une page d'erreur

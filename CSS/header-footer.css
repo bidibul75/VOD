@@ -1,11 +1,17 @@
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px;
     position: sticky;
     top: 0px;
     z-index: 999;
-    
+    height: 90px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .logoMovease{
@@ -13,13 +19,8 @@ header {
 }
 
 .panier{
-    height: 2.5em;
-
+    height: 2em;
 }
-
-/* .internal-links a:hover{
-    transform: scale(1);
-} */
 
 a {
     color: #fff;
@@ -33,25 +34,6 @@ a:hover{
     color: rgb(179, 16, 220);
     -webkit-transition: color 0.5s;
     transition: color 0.5s;
-}
-
-/* .lookingForBar{
-  justify-content: flex-end;
-    align-items: flex-end; 
-    position: relative;
-    left: 10em;
-    top: 10px;
-    top: 0.3vw;
-} */
-
-nav ul {
-    margin-left: 23px;
-    list-style-type: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 20px;
 }
 
 .login img{
@@ -86,11 +68,10 @@ input{
 
 .listNavBar{
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     background-color: #333;
     color: #fff;
     padding: 10px;
-
 }
 
 .search-form img{

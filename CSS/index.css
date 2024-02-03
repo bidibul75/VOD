@@ -27,3 +27,7 @@
 .total {
     font-size: 2em;
 }
+.recherche{
+    display: flex;
+    justify-content: space-around;
+}

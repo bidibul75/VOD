@@ -54,12 +54,17 @@ function extractionNomFilm($numeroFilm)
 
     return $resultat['nom'];
 };
+$messageAchat = "";
+
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array();
+};
 
 if (isset($_GET['choix'])) {
     $choix = $_GET['choix'];
 
     if ($choix == "delete") {
-        unset($_SESSION['panier']);
+        $_SESSION['panier'] = array();
     } else {
         $typeAchat = formatObjetAchete($choix);
         $choix = retraitDebutChaine($choix, strlen($typeAchat));
@@ -68,18 +73,13 @@ if (isset($_GET['choix'])) {
 
         $prixFilmAchete = prixFilmAchete($choix, $numeroDeFilmAchete);
         if ($typeAchat == "achat") {
-            $messageAchat = "Vous avez acheté le film n° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
+            $messageAchat = "Vous avez acheté le film " . extractionNomFilm(intval($numeroDeFilmAchete)) . " pour un montant de $prixFilmAchete €.";
         } else {
-            $messageAchat = "Vous avez acheté le streaming du film N° $numeroDeFilmAchete pour un montant de $prixFilmAchete €.";
+            $messageAchat = "Vous avez acheté le streaming du film " . extractionNomFilm(intval($numeroDeFilmAchete)) . " pour un montant de $prixFilmAchete €.";
         };
-
-        // $_SESSION['panier'] = ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete];
-        if (end($_SESSION['panier'])!= ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]){
+        if (end($_SESSION['panier']) != ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]) {
             array_push($_SESSION['panier'], ['numeroDeFilmAchete' => $numeroDeFilmAchete, 'typeAchat' => $typeAchat, 'prixFilmAchete' => $prixFilmAchete]);
-
         }
-        
-        // $_GET['choix']="PanierTraite";
     }
 } else {
     $messageAchat = "";
@@ -95,7 +95,6 @@ if (isset($_GET['choix'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/header-footer.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -125,17 +124,16 @@ if (isset($_GET['choix'])) {
 
 <body>
 
-
     <?php include("private/header.php"); ?>
-    <div class="container">
-        <p class="h1">Panier</p>
+
+   <br><br> <div class="container">
+        <p class="h1">Panier</p><br>
         <?= $messageAchat; ?>
-        <br><br>
+        <br><br><br>
         <p>Votre panier est actuellement composé des films suivants :</p>
 
 
         <?php
-
         echo '<table class="table">';
         echo '<thead><tr><th>Nom du film</th><th>Format d\'achat</th><th>Prix</th></tr></thead></tbody>';
         $prixTotal = 0;
@@ -149,7 +147,7 @@ if (isset($_GET['choix'])) {
                 };
                 echo '<td>' . $element . '</td>';
             };
-            $prixTotal += floatval($element);
+            @$prixTotal += floatval($element);
             echo '</tr>';
         };
         echo '<tfoot><tr><td></td><th>Total :</th><th>', $prixTotal, '</th></tfoot>';
@@ -168,13 +166,11 @@ if (isset($_GET['choix'])) {
                     <button class="btn btn-primary" type="submit" name="choix" value="">Procéder au paiement
                 </form>
             </div>
-
-
         </div>
-
+        <br><br><br><br><br>
 
     </div>
-    <br>
+
     <?php include("private/footer.html"); ?>
 </body>
 

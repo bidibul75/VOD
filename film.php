@@ -1,7 +1,5 @@
 <?php
-    //print_r($_GET);
-    
-    if (isset($_GET["id"])) {
+if (isset($_GET["id"])) {
 
     $id = $_GET["id"];
     $dbh = new PDO("mysql:host=127.0.0.1;dbname=movease;port=3306;charset=utf8mb4", "root", "");
@@ -10,8 +8,6 @@
     $stmt->bindParam(":id", $id);
     $stmt->execute();
     $movie = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //print_r($movie);
 }
 ?>
 <!DOCTYPE html>
@@ -51,39 +47,38 @@
     <meta name="theme-color" content="#ffffff">
 
 </head>
-
 <body>
     <?php include("private/header.php") ?>
-    <div class="presentation">
-        <div class="titre">
-            <h1><?= $movie["nom"] ?> </h1>
-        </div>
-        <div class="photoFilm">
+
+    <div class="presentation container-fluid">
+        <div class="col-sm-3 row">
             <img src="<?= $movie["imageProduit"] ?>" alt="affiche film" class="filmPhoto">
         </div>
-        <div class="synopsis">
-            <p>Synopsis : <br><?= $movie["synopsis"] ?></p>
+        <div class="col-sm-7 row">
+            <div><br><br><br><br>
+                <h1><?= $movie["nom"] ?> </h1>
+                <p>Réalisateur : </p>
+                <h4><?= $movie["realisateur"] ?></h4>
+                <p>Synopsis : <br><br><?= $movie["synopsis"] ?></p>
+            </div>
+      
+        <div class="col-sm-12 row">
+                            <div class="col-sm-6">
+                    <?php $infoAchat = "achat" . $movie["idProduit"] . "*" . $movie["prixAchat"]; ?>
+                    <?php $infoStream = "stream" . $movie["idProduit"] . "*" . $movie["prixStream"]; ?>
+                    <form action="./panier.php" method="GET">
+                        <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoAchat; ?>">Achat : <?= $movie["prixAchat"] . " €" ?></button>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <form action="./panier.php" method="GET">
+                        <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoStream; ?>">Stream : <?= $movie["prixStream"] . " €" ?></button>
+                    </form>
+                </div>
+                </div>  
         </div>
-        <div class="realisateur">
-            <p>Réalisateur : </p>
-            <h4><?= $movie["realisateur"] ?></h4>
-        </div>
-
-        <?php $infoAchat = "achat" . $movie["idProduit"] . "*" . $movie["prixAchat"]; ?>
-        <?php $infoStream = "stream" . $movie["idProduit"] . "*" . $movie["prixStream"]; ?>
-
-        <div class="boutons">
-            <form action="./panier.php" method="GET">
-                <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoAchat; ?>">Achat : <?= $movie["prixAchat"] . " €" ?></button>
-            </form>
-            &nbsp;&nbsp;&nbsp;
-            <form action="./panier.php" method="GET">
-                <button class="btn btn-primary" type="submit" name="choix" value="<?= $infoStream; ?>">Stream : <?= $movie["prixStream"] . " €" ?></button>
-            </form>
-        </div>
-
     </div>
-    <?php include("footer.html") ?>
+    <?php include("private/footer.html") ?>
 </body>
 
 </html>

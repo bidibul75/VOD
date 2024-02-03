@@ -1,51 +1,18 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+.presentation {
+  max-width: 100%;
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
 .filmPhoto {
   height: 40vw;
 }
 
-.presentation {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-}
 
-.photoFilm {
-  grid-column: 2fr;
-  grid-row: 1/3;
-}
-
-.titre {
-  grid-column: 2/3;
-  grid-row: 1/3;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  top: 15vw;
-}
-
-.synopsis {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-
-/* .boutons{
-    grid-column: 2/3;
-    grid-row: 3/3;
-    display: flex;
-    flex-direction: row;
-    width: 10vw;
-    position: relative;
-    bottom: 15vw;
-} */
-
-.boutons {
-  grid-column: 2/3;
-  grid-row: 3/3;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  bottom: 15vw;
-
-}

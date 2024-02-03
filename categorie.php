@@ -22,7 +22,7 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title><?= $movies[0]['nomGenre']?></title>
     <link rel="stylesheet" href="CSS/produit.css">
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/film.css">
+    <!-- <link rel="stylesheet" href="CSS/film.css"> -->
     <link rel="stylesheet" href="CSS/header-footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,6 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Boostrap -->
     <link rel="stylesheet" href="CSS/bootstrap.css">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="logos/favicon/apple-icon-57x57.png">
@@ -52,7 +51,6 @@ $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="theme-color" content="#ffffff">
 
 </head>
-
 <body>
     <?php include("private/header.php") ?>
     <main>
