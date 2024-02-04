@@ -58,7 +58,6 @@ $dbh = null;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
-    <!-- <link rel="stylesheet" href="film.css"> -->
     <link rel="stylesheet" href="CSS/header-footer.css">
     <title>Mov'Ease - Accueil</title>
 
@@ -93,7 +92,7 @@ $dbh = null;
     <br>
 
     <?php if ($aFaitUneRecherche) : ?>
-        <h2>Résultats de recherche pour "<?= htmlspecialchars($research) ?>"</h2>
+        <h3>Résultats de recherche pour "<?= htmlspecialchars($research) ?>"</h3>
         <div class="horizontalScroll">
             <?php foreach ($movies as $movie) : ?>
                 <article class="product">
@@ -101,7 +100,7 @@ $dbh = null;
                         <img src="<?= $movie["imageProduit"] ?>" alt="<?= $movie["nom"] ?>" class="affiche">
                     </a>
                     <div class="details">
-                        <h2><?= $movie["nom"] ?></h2>
+                        <h5><?= $movie["nom"] ?></h5>
                     </div>
                 </article>
             <?php endforeach; ?>

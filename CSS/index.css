@@ -17,6 +17,10 @@
 .affiche:hover{
     transform: scale(1.15);
 }
+.details {
+    padding-left: 27px;
+    padding-top: 25px;
+}
 
 .horizontalScroll{
     display: flex;
